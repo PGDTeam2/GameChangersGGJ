@@ -23,11 +23,6 @@ public class Readfight : MonoBehaviour
                 spawnFight();
             }
         }
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            getFight(FightToSpawn);
-            spawnFight();
-        }
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             //dev check code for fight 1
@@ -67,8 +62,8 @@ public class Readfight : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             //dev check code for fight 7
-            bracketSystem.fights[10].winner = 1;
-            bracketSystem.fights[11].winner = 1;
+            bracketSystem.fights[12].winner = 1;
+            bracketSystem.fights[13].winner = 1;
 
             advanceBranch(bracketSystem.fights[12], bracketSystem.fights[13]);
         }
@@ -78,10 +73,10 @@ public class Readfight : MonoBehaviour
     {
         currentfight = bracketSystem.fights[fightNr];
     }
-    void spawnFight(GameObject spawnLocationFirst,GameObject spawnLocationSecond)
+    void spawnFight()
     {
-        Instantiate(currentfight.firstFighter,spawnLocationFirst.transform);
-        Instantiate(currentfight.secondFighter, spawnLocationSecond);
+        Instantiate(currentfight.firstFighter);
+        Instantiate(currentfight.secondFighter);
     }
     void advanceBranch(Fight firstFight, Fight secondFight)
     {
