@@ -7,25 +7,31 @@ using UnityEngine;
 public class BracketSystem : MonoBehaviour
 {
     [SerializeField] int amount;
+    [SerializeField] int rounds;
     public GameObject[] Enemies;
-    public Fight[] fights;
+    public List<Fight> fights;
     public GameObject Player;
 
 
     void Start()
     {
-        fights = new Fight[amount];
+        fights =  new List<Fight>();
         GenerateFights();
+    }
+
+    private void Update()
+    {
+        Debug.Log(fights.Count);
     }
 
 
 
     void GenerateFights()
     {
-        for (int i = 0; i < fights.Length; i++)
+        fights.Add(new Fight(0, Player, Enemies[0]));
+        for (int i = 1; i < Enemies.Length; i++)
         {
-            if (i == 0)
-                fights[i] = new Fight(0, Player, Enemies[0]);
+            fights.Add(new Fight(i, Enemies[i], Enemies[i]));
         }
 
     }
