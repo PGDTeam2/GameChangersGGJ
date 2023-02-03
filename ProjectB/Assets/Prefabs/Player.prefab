@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1161747137}
   m_Layer: 0
-  m_Name: groundPoint
+  m_Name: Groundpoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -977,9 +977,9 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 10
+  m_LinearDrag: 5
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 5
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -1003,8 +1003,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af6be950f7c9f3049b1568adf4f5878c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 90
-  jumpForce: 300
+  movementSpeed: 45
+  jumpForce: 1000
 --- !u!1 &6089160598269469113
 GameObject:
   m_ObjectHideFlags: 0
