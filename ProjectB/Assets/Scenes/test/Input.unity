@@ -578,6 +578,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 849509627, guid: 274ab1288545d9f429ce6680c9329d90, type: 3}
+      propertyPath: movementSpeed
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 3728393134473840821, guid: 274ab1288545d9f429ce6680c9329d90, type: 3}
+      propertyPath: m_LinearDrag
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3728393134473840821, guid: 274ab1288545d9f429ce6680c9329d90, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3728393134473840822, guid: 274ab1288545d9f429ce6680c9329d90, type: 3}
       propertyPath: m_Name
       value: Player

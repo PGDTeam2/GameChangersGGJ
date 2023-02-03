@@ -108,7 +108,7 @@
                 {
                     "name": "negative",
                     "id": "b88bbea9-549b-44a3-8ea7-c3357b108269",
-                    "path": "",
+                    "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -119,7 +119,7 @@
                 {
                     "name": "positive",
                     "id": "9ba361e1-8b08-40df-8495-486daf9d70ad",
-                    "path": "",
+                    "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -130,7 +130,7 @@
                 {
                     "name": "",
                     "id": "1a27096e-306b-438c-af49-c7894c81d44d",
-                    "path": "<Joystick>/stick/x",
+                    "path": "<Gamepad>/leftStick/x",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

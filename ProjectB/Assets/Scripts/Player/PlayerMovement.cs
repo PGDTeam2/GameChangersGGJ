@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody2D rb;
 
     [SerializeField] private float movementSpeed;
+    private float inputValue;
     [SerializeField] private float jumpForce;
     private bool isGrounded = true;
     public bool IsGrounded { get { return isGrounded; } }
@@ -20,22 +21,22 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update(){
         isGrounded = checkGrounded();
-        Debug.DrawLine(groundPoint.position, groundPoint.position + new Vector3(0,-0.25f,0), Color.red);
+    }
+
+    private void FixedUpdate(){
+
+        rb.AddForce(new Vector2(inputValue * movementSpeed, 0));
     }
     public void HandleMovement(InputAction.CallbackContext context){
-        Debug.Log(context.ReadValue<float>());
+        inputValue = context.ReadValue<float>();
     }
 
 
     public void Jump(InputAction.CallbackContext context){
-        Debug.Log("jump");
         if(!context.started || !isGrounded)
             return;
 
         rb.AddForce(new Vector2(0, jumpForce));
-
-        isGrounded = false;
-
     }
 
     /// <summary>
