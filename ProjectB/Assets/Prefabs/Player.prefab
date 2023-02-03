@@ -885,6 +885,7 @@ GameObject:
   - component: {fileID: 206849785521781555}
   - component: {fileID: 7034139809718280924}
   - component: {fileID: 512377789764323985}
+  - component: {fileID: 1527387642379839453}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -907,7 +908,7 @@ Transform:
   - {fileID: 1096527163738570312}
   - {fileID: 1161747137}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!95 &6089160598278984593
 Animator:
@@ -1005,6 +1006,84 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 45
   jumpForce: 1000
+--- !u!114 &1527387642379839453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6089160598269469111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 4c3211aeeaea19f498d7ecb571f30b73, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 512377789764323985}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: HandleMovement
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: a3947e45-d02e-46a6-842c-cc3c3a970bc6
+    m_ActionName: ingame/Movement
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 512377789764323985}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: Jump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: d89c84b2-d372-4212-a1f6-97a98c0e0094
+    m_ActionName: ingame/Jump[/DualShock4GamepadHID/buttonSouth,/XInputControllerWindows/buttonSouth,/Keyboard/space,/Keyboard/w]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a8162d57-e775-4588-afbd-ba59454be4dc
+    m_ActionName: ingame/Light Attack[/DualShock4GamepadHID/buttonWest,/XInputControllerWindows/buttonWest,/Keyboard/j]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: fcbaca3c-adeb-4b48-a5cb-301d8bb76725
+    m_ActionName: ingame/Heavy attack[/DualShock4GamepadHID/buttonEast,/XInputControllerWindows/buttonEast,/Keyboard/k]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f71efc4f-c51b-4fd0-8d60-f11cc2cef716
+    m_ActionName: ingame/special 1[/DualShock4GamepadHID/leftShoulder,/XInputControllerWindows/leftShoulder,/Keyboard/l]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c6887a14-3002-4861-ad6b-867461009d61
+    m_ActionName: ingame/special 2[/DualShock4GamepadHID/rightShoulder,/XInputControllerWindows/rightShoulder,/Keyboard/semicolon]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: ingame
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &6089160598269469113
 GameObject:
   m_ObjectHideFlags: 0
