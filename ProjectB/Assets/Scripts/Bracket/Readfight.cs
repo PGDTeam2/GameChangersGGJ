@@ -5,68 +5,104 @@ using UnityEngine;
 
 public class Readfight : MonoBehaviour
 {
+    [SerializeField] int FightToSpawn;
     Fight currentfight;
     [SerializeField] BracketSystem bracketSystem;
-    List<GameObject> winners = new List<GameObject>();
 
     private void Start()
     {
-        for (int i = 0; i < bracketSystem.fights.Count; i++)
-        {
-            getFight(i);
-            spawnFight();
-        }
+
     }
     private void Update()
     {
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetKeyDown(KeyCode.K))
         {
-            Debug.Log("player won");
+            for (int i = 0; i < bracketSystem.fights.Count; i++)
+            {
+                getFight(i);
+                spawnFight();
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            getFight(FightToSpawn);
+            spawnFight();
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            //dev check code for fight 1
             bracketSystem.fights[0].winner = 1;
-        }
-        if (Input.GetKeyDown(KeyCode.N))
-        {
-            Debug.Log("enemy3 won :D");
             bracketSystem.fights[1].winner = 1;
+
+            //dev check code for fight 2
+            bracketSystem.fights[2].winner = 1;
+            bracketSystem.fights[3].winner = 1;
+
+            //dev check code for fight 3
+            bracketSystem.fights[4].winner = 1;
+            bracketSystem.fights[5].winner = 1;
+
+            //dev check code for fight 4
+            bracketSystem.fights[6].winner = 1;
+            bracketSystem.fights[7].winner = 1;
+
+            advanceBranch(bracketSystem.fights[0], bracketSystem.fights[1]);
+            advanceBranch(bracketSystem.fights[2], bracketSystem.fights[3]);
+            advanceBranch(bracketSystem.fights[4], bracketSystem.fights[5]);
+            advanceBranch(bracketSystem.fights[6], bracketSystem.fights[7]);
         }
-        if (Input.GetKeyDown(KeyCode.M))
+        if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            Debug.Log("UPDATING");
-            updateFights();
+            //dev check code for fight 5
+            bracketSystem.fights[8].winner = 1;
+            bracketSystem.fights[9].winner = 1;
+
+            //dev check code for fight 6
+            bracketSystem.fights[10].winner = 1;
+            bracketSystem.fights[11].winner = 1;
+
+            advanceBranch(bracketSystem.fights[8], bracketSystem.fights[9]);
+            advanceBranch(bracketSystem.fights[10], bracketSystem.fights[11]);
         }
-        Debug.Log("Winner count " + winners.Count);
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            //dev check code for fight 7
+            bracketSystem.fights[10].winner = 1;
+            bracketSystem.fights[11].winner = 1;
+
+            advanceBranch(bracketSystem.fights[12], bracketSystem.fights[13]);
+        }
     }
 
     void getFight(int fightNr)
     {
         currentfight = bracketSystem.fights[fightNr];
     }
-    void spawnFight()
+    void spawnFight(GameObject spawnLocationFirst,GameObject spawnLocationSecond)
     {
-        Instantiate(currentfight.firstFighter);
-        Instantiate(currentfight.secondFighter);
+        Instantiate(currentfight.firstFighter,spawnLocationFirst.transform);
+        Instantiate(currentfight.secondFighter, spawnLocationSecond);
     }
-    void updateFights()
+    void advanceBranch(Fight firstFight, Fight secondFight)
     {
-        int winnersAmount = 0;
-        foreach (Fight fight in bracketSystem.fights)
+        if (firstFight.winner != 0 && firstFight.winner != 0)
         {
-            if (fight.winner != 0)
-            {
-                winnersAmount++;
-                if (fight.winner == 1)
-                    winners.Add(fight.firstFighter);
-                else if (fight.winner == 2)
-                    winners.Add(fight.secondFighter);
-                fight.winner = 0;
-            }
-            if (winnersAmount == 2)
-            {
-                bracketSystem.fights.Add(new Fight(bracketSystem.fights.Count+1, winners[0], winners[1]));
-                winnersAmount = 0;
-            }
-            Debug.Log(winnersAmount);
+            GameObject winnerFirstFight = null;
+            GameObject winnerSecondFight = null;
+            if (firstFight.winner == 1)
+                winnerFirstFight = firstFight.firstFighter;
+            else if (bracketSystem.fights[0].winner == 2)
+                winnerFirstFight = firstFight.secondFighter;
+
+            if (secondFight.winner == 1)
+                winnerSecondFight = secondFight.firstFighter;
+            else if (secondFight.winner == 2)
+                winnerSecondFight = secondFight.secondFighter;
+
+            bracketSystem.fights.Add(new Fight(winnerFirstFight, winnerSecondFight));
         }
+
+
 
     }
 }
