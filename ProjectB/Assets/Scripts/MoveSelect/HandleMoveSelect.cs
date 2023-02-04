@@ -4,13 +4,15 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.PlayerSettings;
 
 public class HandleMoveSelect : MonoBehaviour
 {
-
-    [SerializeField] Move Move1;
-    [SerializeField] Move Move2;
+    [SerializeField] SetMoveNameToButton Button1;
+    [SerializeField] SetMoveNameToButton Button2;
     [SerializeField] Move NewMove;
+    [SerializeField] SetMoveNameToButton ButtonPrefab;
+    [SerializeField] MoveManager MoveManager;
 
     [SerializeField] GameObject confirmationBox;
 
@@ -18,33 +20,61 @@ public class HandleMoveSelect : MonoBehaviour
     void Start()
     {
         confirmationBox.SetActive(false);
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (MoveManager != null)
+        {
+            if (MoveManager.firstSpecial != null)
+                Button1.move = MoveManager.firstSpecial;
+            if (MoveManager.firstSpecial != null)
+                Button2.move = MoveManager.secondSpecial;
+            NewMove = MoveManager.getLastMove();
+        }
 
     }
 
-    public void ChangeMove(int Location)
+    public void ChangeMove(int Slot)
     {
-        if (Location == 1)
+        if (Slot == 1)
         {
-            Move1 = NewMove;
+            Button2.move = MoveManager.pastMove;
+            MoveManager.changeSpecial(1, NewMove);
         }
-        else if (Location == 2)
+        else if (Slot == 2)
         {
-            Move2 = NewMove;
+            Button1.move = MoveManager.pastMove;
+            MoveManager.changeSpecial(2, NewMove);
         }
         else
         {
             return;
         }
     }
+    [SerializeField] GameObject listLocation;
+    public void ListLearnedMoves()
+    {
+        for (int i = 0; i < MoveManager.learnedMoves.Count; i++)
+        {
+            ButtonPrefab.move = MoveManager.learnedMoves[i];
+            float spacing = -30;
+            Vector3 pos = new Vector3(0, spacing*i, 0);
+            Instantiate(ButtonPrefab, listLocation.transform.position + pos, Quaternion.identity, listLocation.transform);
+        }
+    }
+
+    public void ListNewMove()
+    {
+        ButtonPrefab.move = MoveManager.getLastMove();
+        Instantiate(ButtonPrefab, listLocation.transform.position, Quaternion.identity, listLocation.transform);
+    }
 
     public void DeleteMove()
     {
-
+        
     }
 
     public void RemoveConfirmationBox()
