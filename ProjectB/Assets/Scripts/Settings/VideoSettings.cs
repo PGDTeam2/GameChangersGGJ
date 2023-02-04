@@ -2,12 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 
 
 public class VideoSettings : MonoBehaviour
 {
-    [SerializeField]  Dropdown resolutionDropdown;
+
+
+    private Dropdown qualityDropdown;
+    private Dropdown textureDropdown;
+    private Dropdown aaDropdown;
+
+    [SerializeField] private Dropdown resolutionDropdown;
     Resolution[] resolutions;
     
     // Start is called before the first frame update
@@ -44,5 +51,15 @@ public class VideoSettings : MonoBehaviour
     public void QualityLevel(int index)
     {
         QualitySettings.SetQualityLevel(index);
+    }
+    public void SetTextureQuality(int textureIndex)
+    {
+        QualitySettings.globalTextureMipmapLimit = textureIndex;
+        qualityDropdown.value = 6;
+    }
+    public void SetAntiAliasing(int aaIndex)
+    {
+        QualitySettings.antiAliasing = aaIndex;
+        qualityDropdown.value = 6;
     }
 }
