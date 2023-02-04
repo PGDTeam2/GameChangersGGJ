@@ -15,14 +15,6 @@ public class Readfight : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            for (int i = 0; i < bracketSystem.fights.Count; i++)
-            {
-                getFight(i);
-                spawnFight();
-            }
-        }
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             //dev check code for fight 1
@@ -69,17 +61,13 @@ public class Readfight : MonoBehaviour
         }
     }
 
-    void getFight(int fightNr)
+    public Fight getFight(int fightNr)
     {
-        currentfight = bracketSystem.fights[fightNr];
-    }
-    void spawnFight()
-    {
-        Instantiate(currentfight.firstFighter);
-        Instantiate(currentfight.secondFighter);
+        return bracketSystem.fights[fightNr];
     }
     void advanceBranch(Fight firstFight, Fight secondFight)
     {
+        Debug.Log("BranchAdvance");
         if (firstFight.winner != 0 && firstFight.winner != 0)
         {
             GameObject winnerFirstFight = null;
