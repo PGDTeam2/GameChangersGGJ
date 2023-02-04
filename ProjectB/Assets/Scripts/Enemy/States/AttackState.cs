@@ -11,7 +11,6 @@ public class AttackState : BaseState
 
     public override void OnEnter()
     {
-        anim.st
         base.OnEnter();
         stateMachine.canAttack = false;
         // Add additional code that should be executed when entering the MovingState
