@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class pauzeHandler : MonoBehaviour
 {
     private PlayerInput input;
+    [SerializeField] private MonoBehaviour[] pausedComponents;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +22,9 @@ public class pauzeHandler : MonoBehaviour
 
         Time.timeScale = 0;
 
+        foreach(MonoBehaviour component in pausedComponents)
+            component.enabled = false;
+
         input.actions.FindActionMap("ingame").Disable();
         input.actions.FindActionMap("UI").Enable();
 
@@ -32,6 +36,8 @@ public class pauzeHandler : MonoBehaviour
 
         Time.timeScale = 1;
 
+        foreach(MonoBehaviour component in pausedComponents)
+            component.enabled = true;
         
         input.actions.FindActionMap("ingame").Enable();
         input.actions.FindActionMap("UI").Disable();
