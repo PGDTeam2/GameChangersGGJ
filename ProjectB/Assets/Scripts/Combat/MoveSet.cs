@@ -54,7 +54,7 @@ public class MoveSet : MonoBehaviour
 
     private void DoMove(Move move)
     {
-        if (IsExecutingAttack)
+        if (IsExecutingAttack || Time.timeScale == 0)
             return;
 
         StartCoroutine(PlayAttackAnimation(move));
