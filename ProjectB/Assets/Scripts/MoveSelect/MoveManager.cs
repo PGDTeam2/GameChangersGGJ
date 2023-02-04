@@ -7,7 +7,6 @@ public class MoveManager : MonoBehaviour
     [SerializeField] MoveSet moveSet;
     [SerializeField] public Move firstSpecial;
     [SerializeField] public Move secondSpecial;
-    internal Move pastMove;
     [SerializeReference] internal List<Move> learnedMoves = new();
     private void Awake()
     {
@@ -29,14 +28,23 @@ public class MoveManager : MonoBehaviour
 
     public void changeSpecial(int Slot, Move NewMove)
     {
+        //if(NewMove == null)
+        //{
+        //    if (Slot == 1)
+        //    {
+        //        firstSpecial = NewMove;
+        //    }
+        //    else if (Slot == 2)
+        //    {
+        //        secondSpecial = NewMove;
+        //    }
+        //}
         if(Slot == 1)
         {
-            pastMove = firstSpecial;
             firstSpecial = NewMove;
         }
         else if(Slot == 2)
         {
-            pastMove = secondSpecial;
             secondSpecial = NewMove;
         }
         else

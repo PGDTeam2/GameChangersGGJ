@@ -8,11 +8,15 @@ using static UnityEditor.PlayerSettings;
 
 public class HandleMoveSelect : MonoBehaviour
 {
+    bool editing;
+    bool deleting;
     [SerializeField] SetMoveNameToButton Button1;
     [SerializeField] SetMoveNameToButton Button2;
     [SerializeField] Move NewMove;
     [SerializeField] SetMoveNameToButton ButtonPrefab;
     [SerializeField] MoveManager MoveManager;
+
+    [SerializeField] TextMeshProUGUI ModeText;
 
     [SerializeField] GameObject confirmationBox;
 
@@ -34,24 +38,9 @@ public class HandleMoveSelect : MonoBehaviour
                 Button2.move = MoveManager.secondSpecial;
             NewMove = MoveManager.getLastMove();
         }
-
-    }
-
-    public void ChangeMove(int Slot)
-    {
-        if (Slot == 1)
+        if (!editing && !deleting)
         {
-            Button2.move = MoveManager.pastMove;
-            MoveManager.changeSpecial(1, NewMove);
-        }
-        else if (Slot == 2)
-        {
-            Button1.move = MoveManager.pastMove;
-            MoveManager.changeSpecial(2, NewMove);
-        }
-        else
-        {
-            return;
+            ModeText.text = " ";
         }
     }
     [SerializeField] GameObject listLocation;
@@ -66,15 +55,62 @@ public class HandleMoveSelect : MonoBehaviour
         }
     }
 
+    public void setEditing()
+    {
+        editing = editing ? false : true;
+        ModeText.text = "Adding move";
+    }
+    public void setDelete()
+    {
+        deleting = deleting ? false : true;
+        ModeText.text = "Removing move";
+    }
+
     public void ListNewMove()
     {
         ButtonPrefab.move = MoveManager.getLastMove();
         Instantiate(ButtonPrefab, listLocation.transform.position, Quaternion.identity, listLocation.transform);
     }
 
-    public void DeleteMove()
+    public void ChangeMove(int Slot)
     {
-        
+        if (editing)
+        {
+            if (Slot == 1)
+            {
+                MoveManager.changeSpecial(1, NewMove);
+                editing = false;
+            }
+            else if (Slot == 2)
+            {
+                MoveManager.changeSpecial(2, NewMove);
+                editing = false;
+            }
+            else
+            {
+                return;
+            }
+        }
+    }
+    public void DeleteMove(int Slot)
+    {
+        if (deleting)
+        {
+            if (Slot == 1)
+            {
+                MoveManager.changeSpecial(1, null);
+                deleting = false;
+            }
+            else if (Slot == 2)
+            {
+                MoveManager.changeSpecial(2, null);
+                deleting = false;
+            }
+            else
+            {
+                return;
+            }
+        }
     }
 
     public void RemoveConfirmationBox()
