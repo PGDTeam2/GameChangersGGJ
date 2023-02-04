@@ -5,25 +5,25 @@ using UnityEngine;
 
 public class MoveSet : MonoBehaviour
 {
-    public Move lightAttack;
-    public Move heavyAttack;
-    public Move special1;
-    public Move special2;
+    [SerializeReference] public Move lightAttack;
+    [SerializeReference] public Move heavyAttack;
+    [SerializeReference] public Move special1;
+    [SerializeReference] public Move special2;
 
-    internal List<Move> learnedMoves = new();
-    private Move currentMove;
-    
+    [SerializeReference] internal List<Move> learnedMoves = new();
+    internal Move currentMove;
+
     private CombatEntity context;
     private Animator animator;
 
-    private bool IsExecutingAttack
+    public bool IsExecutingAttack
     {
         get { return currentMove != null; }
     }
 
     private void Awake()
     {
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
         context = GetComponent<CombatEntity>();
     }
 
@@ -41,7 +41,7 @@ public class MoveSet : MonoBehaviour
     {
         DoMove(special1);
     }
-    
+
     public void DoSpecial2Attack()
     {
         DoMove(special2);
@@ -56,20 +56,27 @@ public class MoveSet : MonoBehaviour
     {
         if (IsExecutingAttack)
             return;
-        
+
         StartCoroutine(PlayAttackAnimation(move));
     }
 
     private IEnumerator PlayAttackAnimation(Move move)
     {
         currentMove = move;
-        
+
         animator.Play(move.AnimationName);
-        while (animator.GetCurrentAnimatorStateInfo(0).IsName(move.AnimationName))
-        {
-            yield return null;
-        }
+        if(currentMove.ForceStandStill)
+            animator.Play(move.AnimationName + " Lower");
         
+        while (!animator.GetCurrentAnimatorStateInfo(1).IsName(move.AnimationName))
+        {
+            yield return new WaitForFixedUpdate();
+        }
+        var state = animator.GetCurrentAnimatorStateInfo(1);
+        var clips = animator.GetCurrentAnimatorClipInfo(1);
+        
+        yield return new WaitForSeconds(clips[0].clip.length / state.speed);
+
         currentMove = null;
     }
 }

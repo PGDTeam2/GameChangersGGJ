@@ -15,19 +15,25 @@ public class CombatEntity : MonoBehaviour
 
     private void Awake()
     {
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
         health = GetComponent<Health>();
     }
 
     public bool TestHit(out CombatEntity other)
     {
+        var hits = Physics2D.CircleCastAll((Vector2) HitCollider.transform.position, HitCollider.transform.localScale.x, Vector2.zero, 0, LayerMask.GetMask("CombatEntity"));
+        
         other = null;
-        var hit = Physics2D.CircleCast((Vector2) HitCollider.transform.position, HitCollider.transform.localScale.x, Vector2.zero, 0, LayerMask.GetMask("CombatEntity"));
-        
-        if (hit)
-            other = hit.collider.GetComponent<CombatEntity>();
-        
-        return hit;
+        for (int i = 0; i < hits.Length; i++)
+        {
+            if (hits[i].collider.TryGetComponent<CombatEntity>(out var entity))
+            {
+                if (entity != this)
+                    other = entity;
+            }
+        }
+
+        return other != null;
     }
 
     private void OnDrawGizmos()
