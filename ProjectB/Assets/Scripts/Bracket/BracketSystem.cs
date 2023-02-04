@@ -11,10 +11,12 @@ public class BracketSystem : MonoBehaviour
     public GameObject[] Enemies;
     public List<Fight> fights;
     public GameObject Player;
+    public static BracketSystem instance;
 
 
     void Start()
     {
+        instance = this;
         fights =  new List<Fight>();
         GenerateFights();
     }
