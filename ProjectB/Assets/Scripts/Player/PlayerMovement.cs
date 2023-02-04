@@ -11,6 +11,10 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody2D rb;
 
     [SerializeField] private float movementSpeed;
+    public float _movementSpeed
+    {
+        get { return movementSpeed; }
+    }
     private float inputValue;
     [SerializeField] private float jumpForce;
     private bool isGrounded = true;
