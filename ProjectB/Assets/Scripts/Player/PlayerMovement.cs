@@ -54,6 +54,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void HandleMovement(InputAction.CallbackContext context)
     {
+        if(Time.timeScale == 0)
+            return;
         inputValue = context.ReadValue<float>();
         animator.SetBool("is_walking", inputValue != 0);
     }
@@ -61,7 +63,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
-        if (!context.started || !isGrounded)
+        if(!context.started || !isGrounded || Time.timeScale == 0)
             return;
 
         rb.AddForce(new Vector2(0, jumpForce));

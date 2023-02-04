@@ -70,7 +70,7 @@ public class MoveSet : MonoBehaviour
         
         while (!animator.GetCurrentAnimatorStateInfo(1).IsName(move.AnimationName))
         {
-            yield return new WaitForFixedUpdate();
+            yield return new WaitForSeconds(0.1f);
         }
         var state = animator.GetCurrentAnimatorStateInfo(1);
         var clips = animator.GetCurrentAnimatorClipInfo(1);
