@@ -73,6 +73,6 @@ public class PlayerMovement : MonoBehaviour
     /// <returns>true if player collides with the ground</returns>
     private bool checkGrounded()
     {
-        return Physics2D.CircleCast((Vector2) groundPoint.position, 0.25f, Vector2.zero, 0, LayerMask.GetMask("Ground"));
+        return Physics2D.CircleCast((Vector2) groundPoint.position, 0.15f, Vector2.zero, 0, LayerMask.GetMask("Ground"));
     }
 }
