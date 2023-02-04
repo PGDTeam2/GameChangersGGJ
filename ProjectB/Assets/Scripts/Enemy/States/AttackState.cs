@@ -11,6 +11,11 @@ public class AttackState : BaseState
 
     public override void OnEnter()
     {
+        Vector3 targetpos = stateMachine.getPlayerPos();
+        targetpos.y = trans.position.y; ;
+        //look at player
+        trans.GetChild(0).LookAt(targetpos);
+
         base.OnEnter();
         stateMachine.canAttack = false;
         // Add additional code that should be executed when entering the MovingState

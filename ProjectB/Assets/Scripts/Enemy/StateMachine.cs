@@ -63,6 +63,7 @@ public class StateMachine : MonoBehaviour
             nextState = null;
             currentState.OnEnter();
         }
+        Debug.Log("current state: " + currentState);
 
         //Debug.Log("Current animation clip: " + anim.GetCurrentAnimatorClipInfo(0)[0].clip.name);
 
@@ -73,6 +74,7 @@ public class StateMachine : MonoBehaviour
 
     public void SwitchState()
     {
+        Debug.Log("Switch state");
         currentState.SwitchState();
     }
 
