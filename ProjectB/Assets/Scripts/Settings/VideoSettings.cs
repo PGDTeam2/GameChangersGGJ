@@ -14,7 +14,7 @@ public class VideoSettings : MonoBehaviour
     private Dropdown textureDropdown;
     private Dropdown aaDropdown;
 
-    [SerializeField] private Dropdown resolutionDropdown;
+    [SerializeField] private TMP_Dropdown resolutionDropdown;
     Resolution[] resolutions;
     
     // Start is called before the first frame update
@@ -35,7 +35,9 @@ public class VideoSettings : MonoBehaviour
                   && resolutions[i].height == Screen.currentResolution.height)
                 currentResolutionIndex = i;
         }
-        
+
+        resolutionDropdown.AddOptions(options);
+        resolutionDropdown.RefreshShownValue();
     }
 
     // Update is called once per frame
