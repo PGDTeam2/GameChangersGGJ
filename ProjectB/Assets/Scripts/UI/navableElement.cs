@@ -43,7 +43,7 @@ public class navableElement : MonoBehaviour
         button.onClick.Invoke();
     }
 
-    public navableElement moveTo(Direction direction){
+    public virtual navableElement moveTo(Direction direction){
         if(elements[direction] == null)
             return this;
 
