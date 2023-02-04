@@ -21,7 +21,7 @@ public class BracketSystem : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(fights.Count);
+
     }
 
 

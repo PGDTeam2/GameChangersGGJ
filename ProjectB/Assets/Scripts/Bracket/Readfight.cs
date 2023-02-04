@@ -67,7 +67,6 @@ public class Readfight : MonoBehaviour
     }
     void advanceBranch(Fight firstFight, Fight secondFight)
     {
-        Debug.Log("BranchAdvance");
         if (firstFight.winner != 0 && firstFight.winner != 0)
         {
             GameObject winnerFirstFight = null;
