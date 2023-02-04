@@ -156,8 +156,8 @@ RectTransform:
   m_Father: {fileID: 1321663104}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -396,8 +396,8 @@ RectTransform:
   m_Father: {fileID: 46639060}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -954,7 +954,7 @@ RectTransform:
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1376,7 +1376,7 @@ RectTransform:
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1825,8 +1825,8 @@ RectTransform:
   m_Father: {fileID: 190688170}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1915,6 +1915,7 @@ GameObject:
   m_Component:
   - component: {fileID: 732407569}
   - component: {fileID: 732407570}
+  - component: {fileID: 732407571}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -2008,6 +2009,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &732407571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 732407568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe043f79c569c22469af4c41b1c88118, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  up: {fileID: 1320584008}
+  down: {fileID: 1106151350}
+  left: {fileID: 0}
+  right: {fileID: 0}
 --- !u!1 &755236036
 GameObject:
   m_ObjectHideFlags: 0
@@ -2929,7 +2946,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &942924709
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3308,7 +3325,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9016126c104e74e4d95ea0e198ca81a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeElement: {fileID: 1261112261}
+  activeElement: {fileID: 661061006}
 --- !u!1 &1046633842
 GameObject:
   m_ObjectHideFlags: 0
@@ -3592,6 +3609,7 @@ GameObject:
   - component: {fileID: 1106151349}
   - component: {fileID: 1106151348}
   - component: {fileID: 1106151347}
+  - component: {fileID: 1106151350}
   m_Layer: 5
   m_Name: Exit
   m_TagString: Untagged
@@ -3676,6 +3694,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1039898976}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1106151348
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3714,6 +3744,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1106151345}
   m_CullTransparentMesh: 1
+--- !u!114 &1106151350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1106151345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17e972fb8eb21c2489a5ba27f1cae3c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  up: {fileID: 732407571}
+  down: {fileID: 0}
+  left: {fileID: 0}
+  right: {fileID: 0}
 --- !u!1 &1107828373
 GameObject:
   m_ObjectHideFlags: 0
@@ -4736,6 +4782,7 @@ GameObject:
   - component: {fileID: 1320584007}
   - component: {fileID: 1320584006}
   - component: {fileID: 1320584005}
+  - component: {fileID: 1320584008}
   m_Layer: 5
   m_Name: Dropdown
   m_TagString: Untagged
@@ -4870,6 +4917,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1320584003}
   m_CullTransparentMesh: 1
+--- !u!114 &1320584008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1320584003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68a9622fd1fc22d46892babc4771f784, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  up: {fileID: 0}
+  down: {fileID: 732407571}
+  left: {fileID: 0}
+  right: {fileID: 0}
 --- !u!1 &1321663103
 GameObject:
   m_ObjectHideFlags: 0
@@ -5035,7 +5098,7 @@ RectTransform:
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -6462,7 +6525,19 @@ MonoBehaviour:
     m_ActionId: f83a4f92-4da4-4128-82fb-f779b996777c
     m_ActionName: ingame/pauze[/Keyboard/escape,/DualShock4GamepadHID/start,/XInputControllerWindows/start]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2119092960}
+        m_TargetAssemblyTypeName: UInavigator, Assembly-CSharp
+        m_MethodName: Select
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 79571917-039d-42b4-8370-27d634792c3f
     m_ActionName: UI/Confirm[/Keyboard/space,/Keyboard/enter,/DualShock4GamepadHID/buttonSouth,/XInputControllerWindows/buttonSouth]
   - m_PersistentCalls:
@@ -6474,7 +6549,19 @@ MonoBehaviour:
     m_ActionId: 199aa110-d8d9-4ccd-b472-ede424c4d2c4
     m_ActionName: UI/Close[/DualShock4GamepadHID/start,/XInputControllerWindows/start]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2119092960}
+        m_TargetAssemblyTypeName: UInavigator, Assembly-CSharp
+        m_MethodName: MoveToElement
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 03e62bed-3887-43fd-bc7e-dc94f5b0846c
     m_ActionName: UI/Navigation[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/DualShock4GamepadHID/leftStick,/XInputControllerWindows/leftStick,/DualShock4GamepadHID/dpad,/XInputControllerWindows/dpad]
   m_NeverAutoSwitchControlSchemes: 0
@@ -6494,7 +6581,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9016126c104e74e4d95ea0e198ca81a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeElement: {fileID: 0}
+  activeElement: {fileID: 1106151350}
 --- !u!1 &2145943835
 GameObject:
   m_ObjectHideFlags: 0
