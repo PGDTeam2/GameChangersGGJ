@@ -268,13 +268,45 @@ MonoBehaviour:
     m_ActionId: fcbaca3c-adeb-4b48-a5cb-301d8bb76725
     m_ActionName: ingame/Heavy attack[/DualShock4GamepadHID/buttonEast,/XInputControllerWindows/buttonEast,/Keyboard/k]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2088384277637556871}
+        m_TargetAssemblyTypeName: MoveSet, Assembly-CSharp
+        m_MethodName: DoSpecial1Attack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: f71efc4f-c51b-4fd0-8d60-f11cc2cef716
     m_ActionName: ingame/special 1[/DualShock4GamepadHID/leftShoulder,/XInputControllerWindows/leftShoulder,/Keyboard/l]
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: c6887a14-3002-4861-ad6b-867461009d61
     m_ActionName: ingame/special 2[/DualShock4GamepadHID/rightShoulder,/XInputControllerWindows/rightShoulder,/Keyboard/semicolon]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f83a4f92-4da4-4128-82fb-f779b996777c
+    m_ActionName: ingame/pauze[/Keyboard/escape,/XInputControllerWindows/start]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 79571917-039d-42b4-8370-27d634792c3f
+    m_ActionName: UI/Confirm[/Keyboard/space,/Keyboard/enter,/XInputControllerWindows/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ff932aba-47b9-4e6b-bd9c-11485d26b286
+    m_ActionName: UI/Cancel[/Keyboard/escape,/XInputControllerWindows/buttonEast]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 199aa110-d8d9-4ccd-b472-ede424c4d2c4
+    m_ActionName: UI/Close[/XInputControllerWindows/start]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 03e62bed-3887-43fd-bc7e-dc94f5b0846c
+    m_ActionName: UI/Navigation[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/XInputControllerWindows/leftStick,/XInputControllerWindows/dpad]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: ingame
@@ -297,7 +329,6 @@ MonoBehaviour:
   special1: {fileID: 0}
   special2: {fileID: 0}
   learnedMoves: []
-  currentMove: {fileID: 0}
 --- !u!114 &1109341024800961830
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -512,8 +543,28 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7447163605590411542, guid: 907fd825e3988774caab4234b943bf44, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8814976898090021187}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7447163605589988728, guid: 907fd825e3988774caab4234b943bf44, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1343467687115496648}
   m_SourcePrefab: {fileID: 100100000, guid: 907fd825e3988774caab4234b943bf44, type: 3}
+--- !u!1 &2419810494287268167 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7447163605589988728, guid: 907fd825e3988774caab4234b943bf44, type: 3}
+  m_PrefabInstance: {fileID: 5101812040900140095}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1343467687115496648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2419810494287268167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82e0ff0ab49ad54468d937280df3865e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2419810494287631655 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7447163605590411544, guid: 907fd825e3988774caab4234b943bf44, type: 3}
