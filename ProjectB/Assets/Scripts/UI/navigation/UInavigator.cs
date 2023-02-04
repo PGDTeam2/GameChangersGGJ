@@ -31,7 +31,9 @@ public class UInavigator : MonoBehaviour
         activeElement = activeElement.moveTo(inputDirection);
     }
 
-    public void Select(){
+    public void Select(InputAction.CallbackContext context){
+        if(!context.started)
+            return;
         activeElement.Activate();
     }
 }

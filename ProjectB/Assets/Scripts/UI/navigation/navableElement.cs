@@ -7,15 +7,14 @@ public enum Direction{
     up,down,left,right
 }
 
-[RequireComponent(typeof(Button))]
 public class navableElement : MonoBehaviour
 {
-    [SerializeField] navableElement up;
-    [SerializeField] navableElement down;
+    [SerializeField] protected navableElement up;
+    [SerializeField] protected navableElement down;
     [SerializeField] navableElement left;
     [SerializeField] navableElement right;
 
-    private Dictionary<Direction, navableElement> elements = new Dictionary<Direction, navableElement>();
+    protected Dictionary<Direction, navableElement> elements = new Dictionary<Direction, navableElement>();
 
     private float enlargementValue = 1.3f;
     Button button;
