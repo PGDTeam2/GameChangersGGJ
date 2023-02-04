@@ -52,9 +52,16 @@ public class MoveSet : MonoBehaviour
         currentMove.Execute(context);
     }
 
+    public void CancelMove()
+    {
+        StopAllCoroutines();
+        currentMove.OnCancel(context);
+        currentMove = null;
+    }
+
     private void DoMove(Move move)
     {
-        if (IsExecutingAttack)
+        if (IsExecutingAttack || Time.timeScale == 0)
             return;
 
         StartCoroutine(PlayAttackAnimation(move));
@@ -65,8 +72,16 @@ public class MoveSet : MonoBehaviour
         currentMove = move;
 
         animator.Play(move.AnimationName);
-        if(currentMove.ForceStandStill)
-            animator.Play(move.AnimationName + " Lower");
+        if (currentMove.ForceStandStill)
+        {
+            var lowerName = move.AnimationName + " Lower";
+            if (animator.HasState(0, Animator.StringToHash(lowerName)))
+            {
+                animator.Play(lowerName);
+            }
+        }
+        
+        currentMove.OnAnimationStart(context);
         
         while (!animator.GetCurrentAnimatorStateInfo(1).IsName(move.AnimationName))
         {
@@ -76,7 +91,8 @@ public class MoveSet : MonoBehaviour
         var clips = animator.GetCurrentAnimatorClipInfo(1);
         
         yield return new WaitForSeconds(clips[0].clip.length / state.speed);
-
+        
+        currentMove.OnAnimationEnd(context);
         currentMove = null;
     }
 }
