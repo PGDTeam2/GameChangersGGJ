@@ -8,11 +8,11 @@ public abstract class BaseState
     protected Rigidbody2D rb;
     protected Transform trans;
 
-    public bool canTransition;
+    public bool canTransition = true;
 
     public Transform playerPos;
 
-    public float attackRange = 1.2f;
+    public float attackRange = 2.2f;
     public float movementSpeed;
 
     public StateMachine stateMachine;
@@ -34,7 +34,11 @@ public abstract class BaseState
         // Add code that should be executed when entering the state
     }
 
-    public abstract void Update();
+    public virtual void Update()
+    {
+        Debug.Log("Base update");
+        
+    }
 
     public virtual void OnExit()
     {
@@ -44,20 +48,5 @@ public abstract class BaseState
     public virtual void SwitchState()
     {
         //if in idle or moving enemy can switch state
-        if(anim.GetCurrentAnimatorStateInfo(0).IsName("Idle") || anim.GetCurrentAnimatorStateInfo(0).IsName("Moving"))
-        {
-            canTransition = true;
-        } 
-        //else if current animation is done enemy can switch state
-        else if(anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
-        {
-            canTransition = true;
-        } 
-        //Else cant transition
-        else
-        {
-            canTransition = false;
-            return;
-        }
     }
 }

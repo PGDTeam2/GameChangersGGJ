@@ -60,6 +60,7 @@ public class MoveSet : MonoBehaviour
         StartCoroutine(PlayAttackAnimation(move));
     }
 
+
     private IEnumerator PlayAttackAnimation(Move move)
     {
         currentMove = move;

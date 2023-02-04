@@ -17,10 +17,11 @@ public class StateMachine : MonoBehaviour
 
     public float movementSpeed;
 
-    private Transform playerSpawn;
+    public Vector3 playerSpawn;
     public PlayerMovement player;
 
     public bool playerMoved = false;
+    public bool canAttack;
 
 
 
@@ -30,32 +31,35 @@ public class StateMachine : MonoBehaviour
     {
         currentState = new IdleState(anim, rb, trans, player.transform, this);
         currentState.OnEnter();
-        playerSpawn = player.transform;
+        playerSpawn = player.transform.position;
         previousState = currentState;
         movementSpeed = player._movementSpeed;
+        canAttack = true;
         //nextState = new MovingState(anim, rb, player, this);
     }
 
     private void Update()
     {
-        if(!playerMoved && playerSpawn.position != playerSpawn.position)
+        if(!playerMoved && player.transform.position != playerSpawn)
         {
             playerMoved = true;
         }
 
-        Debug.Log("Statemachine, currentstate: " + currentState);
-        Debug.Log("Current animation clip: " + anim.GetCurrentAnimatorClipInfo(0)[0].clip.name);
-
+        if(!canAttack)
+        {
+            Debug.Log("Attack disabled");
+        }
+        
 
        //Dont update state if next state is same as current
        if(nextState == currentState)
         {
             nextState = null;
-            Debug.Log("Duplicate state entry");
         }
+        currentState.Update();
 
-       //Change current state
-       if(nextState != null)
+        //Change current state
+        if (nextState != null)
         {
             currentState.OnExit();
             previousState = currentState;
@@ -63,12 +67,30 @@ public class StateMachine : MonoBehaviour
             nextState = null;
             currentState.OnEnter();
         }
-        currentState.Update();
+
+        Debug.Log("Statemachine, currentstate: " + currentState);
+        //Debug.Log("Current animation clip: " + anim.GetCurrentAnimatorClipInfo(0)[0].clip.name);
+
+
+        //Debug.Log(anim.GetCurrentAnimatorStateInfo(0).IsName("Idle"));
+        
+    }
+
+    public void SwitchState()
+    {
         currentState.SwitchState();
+    }
+
+    public IEnumerator enableAttack()
+    {
+        yield return new WaitForSeconds(2f);
+        Debug.Log("Attack re-enabled");
+        canAttack = true;
     }
 
     public Vector3 getPlayerPos()
     {
         return player.transform.position;
     }
+
 }

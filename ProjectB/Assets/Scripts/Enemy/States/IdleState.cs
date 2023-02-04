@@ -17,12 +17,19 @@ public class IdleState : BaseState
 
     public override void Update()
     {
+        //base.Update();
+        if (stateMachine.player.transform.position != stateMachine.playerSpawn)
+        {
+            SwitchState();
+            return;
+        }
         // Add code that updates the MovingState
     }
 
     public override void OnExit()
     {
         base.OnExit();
+        anim.ResetTrigger("Idling");
         // Add additional code that should be executed when exiting the MovingState
     }
 
@@ -30,34 +37,40 @@ public class IdleState : BaseState
     {
         base.SwitchState();
         //if(player == playerSpa)
-        
-        
+
+        Debug.Log(canTransition);
         if(canTransition)
         {
             float distance = trans.position.x - playerPos.position.x;
             //float distance = this.transform.position.x - player.position.x;
             if (Mathf.Abs(distance) > attackRange)
             {
-                Debug.Log("nextstate: moving");
                 stateMachine.nextState = new MovingState(anim, rb, trans, playerPos, stateMachine);
             }
             else
             {
-                Debug.Log("ïn combat range");
-                if(stateMachine.playerMoved)
+                if(stateMachine.playerMoved && stateMachine.canAttack)
                 {
                     //Choosing attack 
+                    float randomAttack = Random.Range(0, 100);
+                    if(randomAttack < 40)
+                    {
+                        //light attack
+                        stateMachine.nextState = new LightAttackState(anim, rb, trans, playerPos, stateMachine);
+                    } else if(randomAttack < 85)
+                    {
+                        //heavy attack
+                        stateMachine.nextState = new HeavyAttackState(anim, rb, trans, playerPos, stateMachine);
+                    } else
+                    {
+                        //special move
+                        stateMachine.nextState = new LightAttackState(anim, rb, trans, playerPos, stateMachine);
+                    }
+                    
 
-                } else
-                {
-                    stateMachine.nextState = new IdleState(anim, rb, trans, playerPos, stateMachine);
-                }
+                } 
 
             }
-            //Check if enemy is in attack range
-
-            //Determine attack
-            //Else move towards player
         }
 
     }

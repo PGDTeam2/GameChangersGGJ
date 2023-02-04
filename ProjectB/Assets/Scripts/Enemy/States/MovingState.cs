@@ -25,11 +25,15 @@ public class MovingState : BaseState
         //look at player
         trans.GetChild(0).LookAt(targetpos);
         trans.position += trans.GetChild(0).forward * 2.0f * Time.deltaTime;
-        Debug.Log("Movve");
+
+        float distance = trans.position.x - stateMachine.getPlayerPos().x;
+        if (Mathf.Abs(distance) < attackRange && stateMachine.canAttack)
+        {
+            SwitchState();
+        }
 
 
-
-    }
+        }
 
     public override void OnExit()
     {
@@ -39,17 +43,27 @@ public class MovingState : BaseState
 
     public override void SwitchState()
     {
-        base.SwitchState();
-        float distance = trans.position.x - stateMachine.getPlayerPos().x;
-        Debug.Log("Distance: " + distance);
-        if (Mathf.Abs(distance) < attackRange)
-        {
-            Debug.Log("In combat range");
+        
+            stateMachine.canAttack = false;
             gizmosCenter = trans.position;
-            
-            //Attack state
-            stateMachine.nextState = new IdleState(anim, rb, trans, playerPos, stateMachine);
-        }   
+            float randomAttack = Random.Range(0, 100);
+            if (randomAttack < 40)
+            {
+                //light attack
+                stateMachine.nextState = new LightAttackState(anim, rb, trans, playerPos, stateMachine);
+                
+            }
+            else if (randomAttack < 85)
+            {
+                //heavy attack
+                stateMachine.nextState = new HeavyAttackState(anim, rb, trans, playerPos, stateMachine);
+            }
+            else
+            {
+                //special move
+                stateMachine.nextState = new LightAttackState(anim, rb, trans, playerPos, stateMachine);
+            }
+        
     }
 
     void OnDrawGizmos()
