@@ -15,19 +15,17 @@ public class navableElement : MonoBehaviour
     [SerializeField] navableElement left;
     [SerializeField] navableElement right;
 
-    private Button button;
-
     private Dictionary<Direction, navableElement> elements = new Dictionary<Direction, navableElement>();
 
     private float enlargementValue = 1.3f;
+    Button button;
 
-    private void Start(){
+    protected virtual void Start(){
         elements.Add(Direction.up, up);
         elements.Add(Direction.down, down);
         elements.Add(Direction.left, left);
         elements.Add(Direction.right, right);
 
-        button = GetComponent<Button>();
     }
 
 
@@ -39,7 +37,7 @@ public class navableElement : MonoBehaviour
                 transform.localScale /= enlargementValue;
     }
 
-    public void Activate(){
+    public virtual void Activate(){
         button.onClick.Invoke();
     }
 
