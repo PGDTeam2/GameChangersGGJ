@@ -9,7 +9,7 @@ public class StartFight : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Instantiate(FightData.firstFighter, firstspawn.transform);
+        //Instantiate(FightData.firstFighter, firstspawn.transform);
         Instantiate(FightData.secondFighter, secondspawn.transform);
     }
 
