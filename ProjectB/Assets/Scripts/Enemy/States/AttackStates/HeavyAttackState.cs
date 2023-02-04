@@ -12,6 +12,7 @@ public class HeavyAttackState : AttackState
     {
         // Add additional code that should be executed when entering the MovingState
         anim.SetTrigger("HeavyAttack");
+        moveSet.DoHeavyAttack();
         base.OnEnter();
        
     }

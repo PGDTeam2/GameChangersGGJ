@@ -61,12 +61,23 @@ public class MoveSet : MonoBehaviour
 
     private void DoMove(Move move)
     {
+        if(!CompareTag("Player"))
+        {
+            currentMove = move;
+            return;
+        }
         if (IsExecutingAttack || Time.timeScale == 0)
             return;
 
         StartCoroutine(PlayAttackAnimation(move));
     }
 
+
+    public void HandleEnemyMove()
+    {
+        Debug.Log("handle enemy move");
+        currentMove.Execute(context);
+    }
 
     private IEnumerator PlayAttackAnimation(Move move)
     {

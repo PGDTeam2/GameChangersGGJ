@@ -37,8 +37,7 @@ public class IdleState : BaseState
     {
         base.SwitchState();
         //if(player == playerSpa)
-
-        Debug.Log(canTransition);
+            
         if(canTransition)
         {
             float distance = trans.position.x - playerPos.position.x;

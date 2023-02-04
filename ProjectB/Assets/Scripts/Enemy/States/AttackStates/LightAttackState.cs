@@ -13,13 +13,13 @@ public class LightAttackState : AttackState
 
         // Add additional code that should be executed when entering the MovingState
         anim.SetTrigger("LightAttack");
+        moveSet.DoLightAttack();
         base.OnEnter();
     }
 
     public override void Update()
     {
         base.Update();
-        Debug.Log("LightAttackUpdate");
         // Add code that updates the MovingState
     }
 
@@ -31,7 +31,6 @@ public class LightAttackState : AttackState
 
     public override void SwitchState()
     {
-        Debug.Log("after base: " + canTransition);
         
         if (!canTransition)
         {

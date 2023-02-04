@@ -21,18 +21,16 @@ public class AttackState : BaseState
     {
         //base.Update();
         // Add code that updates the MovingState
-       // Debug.Log("normalized time: " + anim.GetCurrentAnimatorStateInfo(0).normalizedTime);
-        if(anim.GetCurrentAnimatorClipInfo(0).Length > 0)
+        // Debug.Log("normalized time: " + anim.GetCurrentAnimatorStateInfo(0).normalizedTime);
+        if (anim.GetCurrentAnimatorClipInfo(0).Length > 0)
         {
-            if(anim.GetCurrentAnimatorClipInfo(0)[0].clip.name == "m_melee_combat_attack_A")
+            if (anim.GetCurrentAnimatorClipInfo(0)[0].clip.name.Contains("Attack") )
             {
                 playedAnim = true;
             }
-            Debug.Log(anim.GetCurrentAnimatorClipInfo(0)[0].clip.name);
         }
          if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && playedAnim)
         {
-            Debug.Log("Animation finished");
             SwitchState();
             return;
         }
@@ -41,9 +39,9 @@ public class AttackState : BaseState
     public override void OnExit()
     {
         base.OnExit();
-        Debug.Log("On Attack Exit");
         playedAnim = false;
         stateMachine.StartCoroutine(stateMachine.enableAttack());
+        moveSet.currentMove = null;
         // Add additional code that should be executed when exiting the MovingState
     }
 

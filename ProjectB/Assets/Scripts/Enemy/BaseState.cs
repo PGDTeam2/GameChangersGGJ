@@ -12,10 +12,11 @@ public abstract class BaseState
 
     public Transform playerPos;
 
-    public float attackRange = 2.2f;
+    public float attackRange = 1.1f;
     public float movementSpeed;
 
     public StateMachine stateMachine;
+    public MoveSet moveSet;
     
 
     public BaseState(Animator animator, Rigidbody2D rigidbody, Transform transform, Transform playerposition, StateMachine statemachine)
@@ -26,6 +27,7 @@ public abstract class BaseState
         playerPos = playerposition;
         stateMachine = statemachine;
         movementSpeed = stateMachine.movementSpeed;
+        moveSet = stateMachine.GetComponent<MoveSet>();
         
     }
 
@@ -36,8 +38,6 @@ public abstract class BaseState
 
     public virtual void Update()
     {
-        Debug.Log("Base update");
-        
     }
 
     public virtual void OnExit()

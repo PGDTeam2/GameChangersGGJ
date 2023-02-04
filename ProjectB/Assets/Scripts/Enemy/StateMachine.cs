@@ -45,10 +45,6 @@ public class StateMachine : MonoBehaviour
             playerMoved = true;
         }
 
-        if(!canAttack)
-        {
-            Debug.Log("Attack disabled");
-        }
         
 
        //Dont update state if next state is same as current
@@ -68,7 +64,6 @@ public class StateMachine : MonoBehaviour
             currentState.OnEnter();
         }
 
-        Debug.Log("Statemachine, currentstate: " + currentState);
         //Debug.Log("Current animation clip: " + anim.GetCurrentAnimatorClipInfo(0)[0].clip.name);
 
 
@@ -83,8 +78,7 @@ public class StateMachine : MonoBehaviour
 
     public IEnumerator enableAttack()
     {
-        yield return new WaitForSeconds(2f);
-        Debug.Log("Attack re-enabled");
+        yield return new WaitForSeconds(0.8f);
         canAttack = true;
     }
 

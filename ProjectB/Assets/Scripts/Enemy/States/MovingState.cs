@@ -6,6 +6,8 @@ public class MovingState : BaseState
 {
 
     private Vector3 gizmosCenter;
+    private bool startMoving;
+
     public MovingState(Animator animator, Rigidbody2D rigidbody, Transform transform, Transform playerPosition, StateMachine statemachine) : base(animator, rigidbody, transform, playerPosition, statemachine)
     {
     }
@@ -19,18 +21,26 @@ public class MovingState : BaseState
 
     public override void Update()
     {
-        Vector3 targetpos = stateMachine.getPlayerPos();
-        targetpos.y = trans.position.y;
-        targetpos.z = 0;
-        //look at player
-        trans.GetChild(0).LookAt(targetpos);
-        trans.position += trans.GetChild(0).forward * 2.0f * Time.deltaTime;
-
-        float distance = trans.position.x - stateMachine.getPlayerPos().x;
-        if (Mathf.Abs(distance) < attackRange && stateMachine.canAttack)
+        if (anim.GetCurrentAnimatorClipInfo(0)[0].clip.name == "m_walk")
         {
-            SwitchState();
+            startMoving = true;
         }
+
+        if (startMoving)
+        {
+            Vector3 targetpos = stateMachine.getPlayerPos();
+            targetpos.y = trans.position.y; ;
+            //look at player
+            trans.GetChild(0).LookAt(targetpos);
+            trans.position += trans.GetChild(0).forward * 2.0f * Time.deltaTime;
+
+            float distance = trans.position.x - stateMachine.getPlayerPos().x;
+            if (Mathf.Abs(distance) < attackRange && stateMachine.canAttack)
+            {
+                SwitchState();
+            }
+        }
+        
 
 
         }
@@ -38,6 +48,7 @@ public class MovingState : BaseState
     public override void OnExit()
     {
         base.OnExit();
+        startMoving = false;
         // Add additional code that should be executed when exiting the MovingState
     }
 

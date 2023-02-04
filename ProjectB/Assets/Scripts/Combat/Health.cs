@@ -6,7 +6,7 @@ using UnityEngine.Serialization;
 
 public class Health : MonoBehaviour
 {
-    [HideInInspector]
+    //[HideInInspector]
     public int CurrentHealth;
 
     public int MaxHealth = 100;
