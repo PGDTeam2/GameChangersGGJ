@@ -4,10 +4,12 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class QualitySettings : MonoBehaviour
+
+public class VideoSettings : MonoBehaviour
 {
     [SerializeField]  Dropdown resolutionDropdown;
     Resolution[] resolutions;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +28,7 @@ public class QualitySettings : MonoBehaviour
                   && resolutions[i].height == Screen.currentResolution.height)
                 currentResolutionIndex = i;
         }
+        
     }
 
     // Update is called once per frame
@@ -36,5 +39,10 @@ public class QualitySettings : MonoBehaviour
         Screen.SetResolution(resolution.width,
                   resolution.height, Screen.fullScreen);
         Debug.Log(resolution);
+    }
+
+    public void QualityLevel(int index)
+    {
+        QualitySettings.SetQualityLevel(index);
     }
 }

@@ -34,12 +34,14 @@ public class PlayerMovement : MonoBehaviour
         }
     }
     public void HandleMovement(InputAction.CallbackContext context){
+        if(Time.timeScale == 0)
+            return;
         inputValue = context.ReadValue<float>();
     }
 
 
     public void Jump(InputAction.CallbackContext context){
-        if(!context.started || !isGrounded)
+        if(!context.started || !isGrounded || Time.timeScale == 0)
             return;
 
         rb.AddForce(new Vector2(0, jumpForce));
@@ -50,7 +52,7 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     /// <returns>true if player collides with the ground</returns>
     private bool checkGrounded(){
-        Debug.Log(Physics2D.CircleCast((Vector2)groundPoint.position, 0.25f, Vector2.zero, 0, LayerMask.GetMask("Ground")));
+
         return Physics2D.CircleCast((Vector2) groundPoint.position, 0.25f, Vector2.zero, 0, LayerMask.GetMask("Ground"));
     }
 }
