@@ -61,6 +61,6 @@ public class VideoSettings : MonoBehaviour
     public void SetAntiAliasing(int aaIndex)
     {
         QualitySettings.antiAliasing = aaIndex;
-        qualityDropdown.value = 6;
+        qualityDropdown.value = 4;
     }
 }
