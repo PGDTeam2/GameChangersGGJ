@@ -59,11 +59,17 @@ public class MoveSet : MonoBehaviour
         currentMove = null;
     }
 
+    public bool IsBelowHealth(int health)
+    {
+        return context.health.CurrentHealth <= health;
+    }
+
     private void DoMove(Move move)
     {
         if(!CompareTag("Player"))
         {
             currentMove = move;
+            currentMove.OnAnimationStart(context);
             return;
         }
         if (IsExecutingAttack || Time.timeScale == 0)
@@ -72,7 +78,14 @@ public class MoveSet : MonoBehaviour
         StartCoroutine(PlayAttackAnimation(move));
     }
 
-
+    public void CurrentMoveAnimationEnded()
+    {
+        if (currentMove != null)
+        {
+            currentMove.OnAnimationEnd(context);
+        }
+    }
+    
     public void HandleEnemyMove()
     {
         Debug.Log("handle enemy move");

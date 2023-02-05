@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AttackState : BaseState
 {
-    private bool playedAnim = false;
+    public bool playedAnim = false;
     public AttackState(Animator animator, Rigidbody2D rigidbody, Transform transform, Transform playerPosition, StateMachine statemachine) : base(animator, rigidbody, transform, playerPosition, statemachine)
     {
     }
@@ -31,11 +31,13 @@ public class AttackState : BaseState
         {
             if (anim.GetCurrentAnimatorClipInfo(0)[0].clip.name.Contains("Attack") )
             {
+                Debug.Log("Played anim");
                 playedAnim = true;
             }
         }
-         if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && playedAnim)
+        if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && playedAnim)
         {
+            Debug.Log("switch");
             SwitchState();
             return;
         }
@@ -46,6 +48,7 @@ public class AttackState : BaseState
         base.OnExit();
         playedAnim = false;
         stateMachine.StartCoroutine(stateMachine.enableAttack());
+        moveSet.CurrentMoveAnimationEnded();
         moveSet.currentMove = null;
         // Add additional code that should be executed when exiting the MovingState
     }

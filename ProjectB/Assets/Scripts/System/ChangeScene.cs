@@ -10,12 +10,15 @@ public enum scenes{
 public class ChangeScene : MonoBehaviour
 {
     [SerializeField] private scenes scene;
-
     /// <summary>
     /// switches scene to the set scene
     /// </summary>
     public void Switch(){
         SceneManager.LoadScene((int)scene);
+    }
+    public void SwitchScene(string name)
+    {
+        SceneManager.LoadScene(name);
     }
 
 }

@@ -709,7 +709,6 @@ MonoBehaviour:
   - {fileID: 1296677894}
   - {fileID: 67913808}
   read: {fileID: 370733315}
-  fight: {fileID: 660471210}
 --- !u!1 &330556783
 GameObject:
   m_ObjectHideFlags: 0
@@ -1060,7 +1059,7 @@ MonoBehaviour:
   amount: 8
   rounds: 4
   Enemies:
-  - {fileID: 6089160598269469111, guid: c475ef928171e8d40a0a80f2e8f0cb4b, type: 3}
+  - {fileID: 5025974533562416083, guid: 97ab8f1b65655c946ad3ecb443650e52, type: 3}
   - {fileID: 2223475067522421579, guid: b1e500417866df5469da113a92295c9e, type: 3}
   - {fileID: 1047372031056176923, guid: 9454270254ad1fb40810ee255664efdd, type: 3}
   - {fileID: 7515700459844861435, guid: b75f13d334535af448bc2f06484f2a69, type: 3}
@@ -1130,8 +1129,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ec5c14ed1ba3ca4f8dc72cce0b88c57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstFighter: {fileID: 0}
-  secondFighter: {fileID: 0}
 --- !u!4 &660471211
 Transform:
   m_ObjectHideFlags: 0
