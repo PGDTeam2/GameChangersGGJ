@@ -31,11 +31,10 @@ public class BracketSystem : MonoBehaviour
     void GenerateFights()
     {
         fights.Add(new Fight(Player, Enemies[0]));
-        for (int i = 1; i < Enemies.Length; i++)
-        {
-            fights.Add(new Fight(Enemies[i], Enemies[i]));
-        }
-
+        fights.Add(new Fight(Enemies[1], Enemies[2]));
+        fights.Add(new Fight(Enemies[3], Enemies[4]));
+        fights.Add(new Fight(Enemies[5], Enemies[6]));
+        fights.Add(new Fight(Enemies[7], Enemies[8]));
     }
 }
 

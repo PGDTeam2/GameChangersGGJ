@@ -26,7 +26,7 @@ public class StartFight : MonoBehaviour
         yield return new WaitForSecondsRealtime(1f);
         Countdown.text = "";
         Time.timeScale = 1;
-        Instantiate(FightData.secondFighter, secondspawn.transform);
+        //Instantiate(FightData.secondFighter, secondspawn.transform);
     }
 
     // Update is called once per frame
