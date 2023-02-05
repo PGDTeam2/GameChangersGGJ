@@ -25,7 +25,7 @@ public class OnClickFunctions : MonoBehaviour
         FightData.firstFighter = read.getFight(0).firstFighter;
         FightData.secondFighter = read.getFight(0).secondFighter;
 
-        SceneManager.LoadScene("FightStart");
+        SceneManager.LoadScene("Level1");
     }
 
 }
