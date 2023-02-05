@@ -23,7 +23,7 @@ public class EndFight : MonoBehaviour
         }
         if (enemyHealth.CurrentHealth <= 0)
         {
-            Readfight.BranchStage++;
+            FightData.Stage++;
             SceneManager.LoadScene("BracketFull");
         }
     }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class FightData : MonoBehaviour
 {
     public static GameObject firstFighter;
+    public static int Stage;
     public static GameObject secondFighter;
     static FightData fightData;
     // Start is called before the first frame update

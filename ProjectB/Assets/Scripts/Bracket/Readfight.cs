@@ -10,9 +10,6 @@ public class Readfight : MonoBehaviour
     Fight currentfight;
     [SerializeField] BracketSystem bracketSystem;
     [SerializeField] OnClickFunctions clickFunctions;
-
-    public static int BranchStage;
-
     private void Start()
     {
         StartCoroutine(moveToFight());
@@ -29,11 +26,11 @@ public class Readfight : MonoBehaviour
         clickFunctions.spawnFightOnLocation();
 
         yield return new WaitForSeconds(3f);
-        if (BranchStage == 0)
+        if (FightData.Stage == 0)
         {
             spawnFightOne();
         }
-        if (BranchStage == 1)
+        if (FightData.Stage == 1)
         {
             bracketSystem.fights[0].winner = 1;
             bracketSystem.fights[1].winner = 1;
@@ -46,16 +43,28 @@ public class Readfight : MonoBehaviour
             advanceBranch(bracketSystem.fights[2], bracketSystem.fights[3]);
             clickFunctions.spawnFightOnLocation();
             yield return new WaitForSeconds(3f);
-            //spawnFightTwo();
+            spawnFightTwo();
         }
-        if (BranchStage == 2)
+        if (FightData.Stage == 2)
         {
+
+            bracketSystem.fights[0].winner = 1;
+            bracketSystem.fights[1].winner = 1;
+
+            //dev check code for fight 2
+            bracketSystem.fights[2].winner = 1;
+            bracketSystem.fights[3].winner = 1;
+
+            advanceBranch(bracketSystem.fights[0], bracketSystem.fights[1]);
+            advanceBranch(bracketSystem.fights[2], bracketSystem.fights[3]);
+
             bracketSystem.fights[4].winner = 1;
             bracketSystem.fights[5].winner = 1;
+
             advanceBranch(bracketSystem.fights[4], bracketSystem.fights[5]);
             clickFunctions.spawnFightOnLocation();
             yield return new WaitForSeconds(3f);
-            //spawnFightThree();
+            spawnFightThree();
         }
     }
 
