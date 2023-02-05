@@ -59,6 +59,11 @@ public class MoveSet : MonoBehaviour
         currentMove = null;
     }
 
+    public bool IsBelowHealth(int health)
+    {
+        return context.health.CurrentHealth <= health;
+    }
+
     private void DoMove(Move move)
     {
         if(!CompareTag("Player"))
