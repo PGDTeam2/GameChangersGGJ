@@ -103,16 +103,22 @@ public class PlayerMovement : MonoBehaviour
     /// function that handles the feet raycast
     /// </summary>
     private void handleFeet(){
-       var hits = Physics2D.CircleCastAll((Vector2) groundPoint.position, 0.15f, Vector2.zero, 0);
+        Debug.Log("hi");
+        isGrounded = false;
+        var hits = Physics2D.CircleCastAll((Vector2) groundPoint.position, 0.15f, Vector2.zero, 0);
        foreach(var hit in hits){
-        if(hit.collider.gameObject == gameObject)
+            Debug.Log(hit.collider.gameObject);
+            if(hit.collider.gameObject == gameObject)
                 continue;
 
         
-        isGrounded = hit.collider.gameObject.layer == LayerMask.NameToLayer("Ground");
+        if(hit.collider.gameObject.layer == LayerMask.NameToLayer("Ground"))
+                isGrounded = true;
+
+            Debug.Log(isGrounded);
 
 
-        if(hit.collider.gameObject.layer == LayerMask.NameToLayer("CombatEntity"))
+            if(hit.collider.gameObject.layer == LayerMask.NameToLayer("CombatEntity"))
                 push(hit.collider.transform);
         }
     }
