@@ -54,6 +54,23 @@ public class IdleState : BaseState
             // Calculate the distance between the enemy and the player
             float distance = trans.position.x - playerPos.position.x;
 
+            //Check specialmove name
+            if(moveSet.special1.name == "Slipper Attack")
+            {
+                //Check if inrange to perform slipper attack
+                if(distance > minSlipperRange && distance < maxSlipperRange && stateMachine.canAttack && stateMachine.canSpecial)
+                {
+                    float randomAttack = Random.Range(0, 100);
+                    Debug.Log("Try slipper: idle");
+                    if (randomAttack > 90)
+                    {
+                        stateMachine.nextState = new SlipperAttackState(anim, rb, trans, playerPos, stateMachine);
+                        SwitchState();
+                        return;
+                    }
+                }
+            }
+
             // Check if the distance is greater than the attack range
             if (Mathf.Abs(distance) > attackRange)
             {

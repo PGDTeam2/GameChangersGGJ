@@ -15,10 +15,13 @@ public abstract class BaseState
     public Transform playerPos; // Reference to the player's position
 
     public float attackRange = 1.1f; // Attack range of the enemy
+    public float minSlipperRange = 1.5f;
+    public float maxSlipperRange = 10.0f;
     public float movementSpeed; // Movement speed of the enemy
 
     public StateMachine stateMachine; // Reference to the state machine component
     public MoveSet moveSet; // Reference to the move set component
+
 
     /// <summary>
     /// Constructor for BaseState class
