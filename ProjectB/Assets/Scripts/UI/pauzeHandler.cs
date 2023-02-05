@@ -7,9 +7,32 @@ public class pauzeHandler : MonoBehaviour
 {
     private PlayerInput input;
     [SerializeField] private MonoBehaviour[] pausedComponents;
+
+    bool blocked = false;
     // Start is called before the first frame update
     void Start()
     {
+    }
+
+
+    void OnEnable()
+    {
+        blocked = true;
+        StartCoroutine(unblock());
+    }
+
+    void OnDisable()
+    {
+       blocked = true;
+
+    }
+
+    IEnumerator unblock()
+    {
+
+        yield return new WaitForSecondsRealtime(0.2f);
+        blocked = false;
+        Debug.Log("thid");
     }
 
     public void pauzeGame(InputAction.CallbackContext context){
@@ -31,6 +54,10 @@ public class pauzeHandler : MonoBehaviour
     }
 
     public void unPauze(){
+
+        Debug.Log("try");
+        if(blocked) return;
+        Debug.Log("succeed");
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
 
@@ -43,6 +70,11 @@ public class pauzeHandler : MonoBehaviour
         input.actions.FindActionMap("UI").Disable();
         gameObject.SetActive(false);
 
+    }
+
+    private void Update()
+    {
+        print(blocked);
     }
 
     /// <summary>
