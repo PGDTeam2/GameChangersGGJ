@@ -44,6 +44,7 @@ public class Readfight : MonoBehaviour
 
             advanceBranch(bracketSystem.fights[0], bracketSystem.fights[1]);
             advanceBranch(bracketSystem.fights[2], bracketSystem.fights[3]);
+            clickFunctions.spawnFightOnLocation();
             yield return new WaitForSeconds(3f);
             //spawnFightTwo();
         }
@@ -52,6 +53,7 @@ public class Readfight : MonoBehaviour
             bracketSystem.fights[4].winner = 1;
             bracketSystem.fights[5].winner = 1;
             advanceBranch(bracketSystem.fights[4], bracketSystem.fights[5]);
+            clickFunctions.spawnFightOnLocation();
             yield return new WaitForSeconds(3f);
             //spawnFightThree();
         }
