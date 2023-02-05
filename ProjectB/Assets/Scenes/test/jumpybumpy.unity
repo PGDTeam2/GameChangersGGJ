@@ -3523,12 +3523,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 512377789764323985, guid: c475ef928171e8d40a0a80f2e8f0cb4b, type: 3}
-      propertyPath: jumpForce
-      value: 1500
-      objectReference: {fileID: 0}
     - target: {fileID: 6089160598269469111, guid: c475ef928171e8d40a0a80f2e8f0cb4b, type: 3}
       propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6089160598269469111, guid: c475ef928171e8d40a0a80f2e8f0cb4b, type: 3}
+      propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 6089160598269967831, guid: c475ef928171e8d40a0a80f2e8f0cb4b, type: 3}
@@ -3574,10 +3574,6 @@ PrefabInstance:
     - target: {fileID: 6089160598269967831, guid: c475ef928171e8d40a0a80f2e8f0cb4b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7034139809718280924, guid: c475ef928171e8d40a0a80f2e8f0cb4b, type: 3}
-      propertyPath: m_GravityScale
-      value: 6.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
