@@ -2,22 +2,39 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Readfight : MonoBehaviour
 {
     [SerializeField] int FightToSpawn;
     Fight currentfight;
     [SerializeField] BracketSystem bracketSystem;
+    [SerializeField] OnClickFunctions clickFunctions;
+
+    public static int BranchStage;
 
     private void Start()
     {
+        StartCoroutine(moveToFight());
 
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+
+    }
+
+    IEnumerator moveToFight()
+    {
+        yield return new WaitForSeconds(0.1f);
+        clickFunctions.spawnFightOnLocation();
+
+        yield return new WaitForSeconds(3f);
+        if (BranchStage == 0)
         {
-            //dev check code for fight 1
+            spawnFightOne();
+        }
+        if (BranchStage == 1)
+        {
             bracketSystem.fights[0].winner = 1;
             bracketSystem.fights[1].winner = 1;
 
@@ -25,40 +42,43 @@ public class Readfight : MonoBehaviour
             bracketSystem.fights[2].winner = 1;
             bracketSystem.fights[3].winner = 1;
 
-            //dev check code for fight 3
-            bracketSystem.fights[4].winner = 1;
-            bracketSystem.fights[5].winner = 1;
-
-            //dev check code for fight 4
-            bracketSystem.fights[6].winner = 1;
-            bracketSystem.fights[7].winner = 1;
-
             advanceBranch(bracketSystem.fights[0], bracketSystem.fights[1]);
             advanceBranch(bracketSystem.fights[2], bracketSystem.fights[3]);
+            yield return new WaitForSeconds(3f);
+            //spawnFightTwo();
+        }
+        if (BranchStage == 2)
+        {
+            bracketSystem.fights[4].winner = 1;
+            bracketSystem.fights[5].winner = 1;
             advanceBranch(bracketSystem.fights[4], bracketSystem.fights[5]);
-            advanceBranch(bracketSystem.fights[6], bracketSystem.fights[7]);
+            yield return new WaitForSeconds(3f);
+            //spawnFightThree();
         }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            //dev check code for fight 5
-            bracketSystem.fights[8].winner = 1;
-            bracketSystem.fights[9].winner = 1;
+    }
 
-            //dev check code for fight 6
-            bracketSystem.fights[10].winner = 1;
-            bracketSystem.fights[11].winner = 1;
+    public void spawnFightOne()
+    {
+        //FightData.firstFighter = getFight(0).firstFighter;
+        //FightData.secondFighter = getFight(0).secondFighter;
 
-            advanceBranch(bracketSystem.fights[8], bracketSystem.fights[9]);
-            advanceBranch(bracketSystem.fights[10], bracketSystem.fights[11]);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            //dev check code for fight 7
-            bracketSystem.fights[12].winner = 1;
-            bracketSystem.fights[13].winner = 1;
+        SceneManager.LoadScene("Level1");
+    }
 
-            advanceBranch(bracketSystem.fights[12], bracketSystem.fights[13]);
-        }
+    public void spawnFightTwo()
+    {
+        //FightData.firstFighter = getFight(4).firstFighter;
+        //FightData.secondFighter = getFight(4).secondFighter;
+
+        SceneManager.LoadScene("Level2");
+    }
+
+    public void spawnFightThree()
+    {
+        //FightData.firstFighter = getFight(7).firstFighter;
+        //FightData.secondFighter = getFight(7).secondFighter;
+
+        SceneManager.LoadScene("Level3");
     }
 
     public Fight getFight(int fightNr)
