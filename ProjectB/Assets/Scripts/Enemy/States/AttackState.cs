@@ -35,7 +35,7 @@ public class AttackState : BaseState
                 playedAnim = true;
             }
         }
-         if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && playedAnim)
+        if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && playedAnim)
         {
             Debug.Log("switch");
             SwitchState();
@@ -48,6 +48,7 @@ public class AttackState : BaseState
         base.OnExit();
         playedAnim = false;
         stateMachine.StartCoroutine(stateMachine.enableAttack());
+        moveSet.CurrentMoveAnimationEnded();
         moveSet.currentMove = null;
         // Add additional code that should be executed when exiting the MovingState
     }

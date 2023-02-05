@@ -10,7 +10,6 @@ public class SlipperAttackState : AttackState
 
     public override void OnEnter()
     {
-
         // Add additional code that should be executed when entering the MovingState
         anim.SetTrigger("SlipperAttack");
         moveSet.DoSpecial1Attack();

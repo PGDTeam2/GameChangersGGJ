@@ -55,7 +55,7 @@ public class IdleState : BaseState
             float distance = trans.position.x - playerPos.position.x;
 
             //Check specialmove name
-            if(moveSet.special1.name == "Slipper Attack")
+            /*if(moveSet.special1.name == "Slipper Attack")
             {
                 //Check if inrange to perform slipper attack
                 if(distance > minSlipperRange && distance < maxSlipperRange && stateMachine.canAttack && stateMachine.canSpecial)
@@ -65,9 +65,38 @@ public class IdleState : BaseState
                     if (randomAttack > 90)
                     {
                         stateMachine.nextState = new SlipperAttackState(anim, rb, trans, playerPos, stateMachine);
-                        SwitchState();
+                        //SwitchState();
                         return;
                     }
+                }
+            }*/
+            
+            if (moveSet.special1.name.Equals("Slipper Attack"))
+            {
+                if (Mathf.Abs(distance) > minSlipperRange && Mathf.Abs(distance) < maxSlipperRange &&
+                    stateMachine.canAttack && stateMachine.canSpecial)
+                {
+                    float randomAttack = Random.Range(0, 100);
+                    Debug.Log("Try slipper: move");
+                    if (randomAttack > 95)
+                    {
+                        stateMachine.canAttack = false;
+                        stateMachine.canSpecial = false;
+                        stateMachine.nextState = new SlipperAttackState(anim, rb, trans, playerPos, stateMachine);
+                        //SwitchState();
+                        return;
+                    }
+                }
+            }
+            else if (moveSet.special1.name.Equals("Heal Move"))
+            {
+                if (moveSet.IsBelowHealth(healMinHealth))
+                {
+                    stateMachine.canAttack = false;
+                    stateMachine.canSpecial = false;
+                    stateMachine.nextState = new HealState(anim, rb, trans, playerPos, stateMachine);
+                    //SwitchState();
+                    return;
                 }
             }
 

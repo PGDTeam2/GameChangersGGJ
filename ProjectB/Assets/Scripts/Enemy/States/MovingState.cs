@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class MovingState : BaseState
 {
-
     private Vector3 gizmosCenter;
     private bool startMoving;
     private bool slipper;
+    private bool heal;
 
-    public MovingState(Animator animator, Rigidbody2D rigidbody, Transform transform, Transform playerPosition, StateMachine statemachine) : base(animator, rigidbody, transform, playerPosition, statemachine)
+    public MovingState(Animator animator, Rigidbody2D rigidbody, Transform transform, Transform playerPosition,
+        StateMachine statemachine) : base(animator, rigidbody, transform, playerPosition, statemachine)
     {
     }
 
@@ -30,7 +31,8 @@ public class MovingState : BaseState
         if (startMoving)
         {
             Vector3 targetpos = stateMachine.getPlayerPos();
-            targetpos.y = trans.position.y; ;
+            targetpos.y = trans.position.y;
+            ;
             //look at player
             trans.GetChild(0).LookAt(targetpos);
             trans.position += trans.GetChild(0).forward * 2.0f * Time.deltaTime;
@@ -38,16 +40,27 @@ public class MovingState : BaseState
             float distance = trans.position.x - stateMachine.getPlayerPos().x;
             //perform slipper attack
             //Debug.Log("distance: " + Mathf.Abs(distance) + " minslipper: " + minSlipperRange + " maxslipper: " + maxSlipperRange + " canAttack: " + stateMachine.canAttack + " canSpecial: " + stateMachine.canSpecial);
-            if(Mathf.Abs(distance) > minSlipperRange && Mathf.Abs(distance) < maxSlipperRange && stateMachine.canAttack && stateMachine.canSpecial)
+            if (moveSet.special1.name.Equals("Slipper Attack"))
             {
-                float randomAttack = Random.Range(0, 100);
-                Debug.Log("Try slipper: move");
-                if(randomAttack > 95)
+                if (Mathf.Abs(distance) > minSlipperRange && Mathf.Abs(distance) < maxSlipperRange &&
+                    stateMachine.canAttack && stateMachine.canSpecial)
                 {
-                    slipper = true;
+                    float randomAttack = Random.Range(0, 100);
+                    Debug.Log("Try slipper: move");
+                    if (randomAttack > 95)
+                    {
+                        slipper = true;
+                        SwitchState();
+                    }
+                }
+            }
+            else if (moveSet.special1.name.Equals("Heal Move"))
+            {
+                if (moveSet.IsBelowHealth(healMinHealth))
+                {
+                    heal = true;
                     SwitchState();
                 }
-                
             }
 
             //perform normal attack
@@ -56,10 +69,7 @@ public class MovingState : BaseState
                 SwitchState();
             }
         }
-        
-
-
-        }
+    }
 
     public override void OnExit()
     {
@@ -70,34 +80,40 @@ public class MovingState : BaseState
 
     public override void SwitchState()
     {
- 
-        if(slipper)
+        if (slipper)
         {
             stateMachine.canAttack = false;
             stateMachine.canSpecial = false;
             stateMachine.nextState = new SlipperAttackState(anim, rb, trans, playerPos, stateMachine);
             return;
         }
+
+        if (heal)
+        {
             stateMachine.canAttack = false;
-            gizmosCenter = trans.position;
-            float randomAttack = Random.Range(0, 100);
-            if (randomAttack < 40)
-            {
-                //light attack
-                stateMachine.nextState = new LightAttackState(anim, rb, trans, playerPos, stateMachine);
-                
-            }
-            else if (randomAttack < 85)
-            {
-                //heavy attack
-                stateMachine.nextState = new HeavyAttackState(anim, rb, trans, playerPos, stateMachine);
-            }
-            else
-            {
-                //special move
-                stateMachine.nextState = new LightAttackState(anim, rb, trans, playerPos, stateMachine);
-            }
-        
+            stateMachine.canSpecial = false;
+            stateMachine.nextState = new HealState(anim, rb, trans, playerPos, stateMachine);
+            return;
+        }
+
+        stateMachine.canAttack = false;
+        gizmosCenter = trans.position;
+        float randomAttack = Random.Range(0, 100);
+        if (randomAttack < 40)
+        {
+            //light attack
+            stateMachine.nextState = new LightAttackState(anim, rb, trans, playerPos, stateMachine);
+        }
+        else if (randomAttack < 85)
+        {
+            //heavy attack
+            stateMachine.nextState = new HeavyAttackState(anim, rb, trans, playerPos, stateMachine);
+        }
+        else
+        {
+            //special move
+            stateMachine.nextState = new LightAttackState(anim, rb, trans, playerPos, stateMachine);
+        }
     }
 
     void OnDrawGizmos()

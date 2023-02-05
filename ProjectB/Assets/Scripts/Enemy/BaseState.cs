@@ -17,6 +17,8 @@ public abstract class BaseState
     public float attackRange = 1.1f; // Attack range of the enemy
     public float minSlipperRange = 1.5f;
     public float maxSlipperRange = 10.0f;
+    public float safeHealDistance = 5f;
+    public int healMinHealth = 50;
     public float movementSpeed; // Movement speed of the enemy
 
     public StateMachine stateMachine; // Reference to the state machine component
