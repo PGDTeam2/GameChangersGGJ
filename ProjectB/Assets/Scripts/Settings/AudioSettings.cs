@@ -12,6 +12,6 @@ public class AudioSettings : MonoBehaviour
    public void SetVolume(Slider slider)
     {
         
-        mixer.SetFloat(audioName, Mathf.Log10(slider.value) * 20);
+        mixer.SetFloat(audioName, Mathf.Log10(slider.value) * 10);
     }
 }

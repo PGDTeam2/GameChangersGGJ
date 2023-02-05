@@ -45,8 +45,7 @@ public class VideoSettings : MonoBehaviour
     public void SetResolution(int resolutionIndex)
     {
         Resolution resolution = resolutions[resolutionIndex];
-        Screen.SetResolution(resolution.width,
-                  resolution.height, Screen.fullScreen);
+        Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
         Debug.Log(resolution);
     }
 
@@ -62,6 +61,6 @@ public class VideoSettings : MonoBehaviour
     public void SetAntiAliasing(int aaIndex)
     {
         QualitySettings.antiAliasing = aaIndex;
-        qualityDropdown.value = 6;
+        qualityDropdown.value = 4;
     }
 }
