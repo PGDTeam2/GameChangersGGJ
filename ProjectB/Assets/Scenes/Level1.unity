@@ -221,7 +221,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 18064627}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.166136, y: -3.1335409, z: 0.9750843}
+  m_LocalPosition: {x: -7.166136, y: -2.07, z: 0.9750843}
   m_LocalScale: {x: 1, y: 4, z: 16.3}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -710,10 +710,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 787105898595102388, guid: e35e4ee4145f6bc40886eecedb5f0b19, type: 3}
+      propertyPath: m_Name
+      value: SecondFighterLocation
+      objectReference: {fileID: 0}
+    - target: {fileID: 6095297110017713141, guid: e35e4ee4145f6bc40886eecedb5f0b19, type: 3}
+      propertyPath: m_Name
+      value: FirstFighterLocation
+      objectReference: {fileID: 0}
     - target: {fileID: 6760586900169952785, guid: e35e4ee4145f6bc40886eecedb5f0b19, type: 3}
       propertyPath: Countdown
       value: 
       objectReference: {fileID: 1610872387}
+    - target: {fileID: 6760586900169952785, guid: e35e4ee4145f6bc40886eecedb5f0b19, type: 3}
+      propertyPath: firstspawn
+      value: 
+      objectReference: {fileID: 2100605053}
+    - target: {fileID: 6760586900169952785, guid: e35e4ee4145f6bc40886eecedb5f0b19, type: 3}
+      propertyPath: secondspawn
+      value: 
+      objectReference: {fileID: 515820565}
     - target: {fileID: 6760586900169952786, guid: e35e4ee4145f6bc40886eecedb5f0b19, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -1213,6 +1229,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 478606, guid: a9cc5585b9634a9449920c03ec6bc243, type: 3}
   m_PrefabInstance: {fileID: 632259258}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &515820565 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 787105898595102388, guid: e35e4ee4145f6bc40886eecedb5f0b19, type: 3}
+  m_PrefabInstance: {fileID: 262916427}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &541430588
 GameObject:
   m_ObjectHideFlags: 0
@@ -1262,7 +1283,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.38388765}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1273,7 +1294,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 5.8930416}
   m_EdgeRadius: 0
 --- !u!4 &541430590
 Transform:
@@ -1461,7 +1482,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.98333526}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1472,7 +1493,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 6.7198873}
   m_EdgeRadius: 0
 --- !u!4 &631452906
 Transform:
@@ -2883,8 +2904,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -4269,6 +4290,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7034139809718280924, guid: c475ef928171e8d40a0a80f2e8f0cb4b, type: 3}
+      propertyPath: m_GravityScale
+      value: 7.51
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4405,6 +4430,11 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 460948, guid: 7641c7e8354e2c44cab6432d9d2c6d1b, type: 3}
   m_PrefabInstance: {fileID: 1521293555}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2100605053 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6095297110017713141, guid: e35e4ee4145f6bc40886eecedb5f0b19, type: 3}
+  m_PrefabInstance: {fileID: 262916427}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2113615874
 PrefabInstance:
