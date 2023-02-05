@@ -88,6 +88,7 @@ public class Readfight : MonoBehaviour
     {
         //FightData.firstFighter = getFight(7).firstFighter;
         //FightData.secondFighter = getFight(7).secondFighter;
+        FightData.Stage = 0;
 
         SceneManager.LoadScene("End Screen");
     }

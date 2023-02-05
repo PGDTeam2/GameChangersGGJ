@@ -35,7 +35,7 @@ public class Projectile : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        
+
         if (col.collider.TryGetComponent<CombatEntity>(out var other))
         {
             if (other != owner)
@@ -44,12 +44,13 @@ public class Projectile : MonoBehaviour
                 damage = 0;
             }
         }
-        else
-            damage = 0;
-
-        if (damage == 0){
+        //else
+        //damage = 0;
+        if (damage == 0)
+        {
             audio.Stop();
             Destroy(gameObject, 1f);
         }
+
     }
 }
