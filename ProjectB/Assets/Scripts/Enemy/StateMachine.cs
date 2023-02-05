@@ -22,6 +22,7 @@ public class StateMachine : MonoBehaviour
 
     public bool playerMoved = false;
     public bool canAttack;
+    public bool canSpecial;
 
 
 
@@ -35,11 +36,13 @@ public class StateMachine : MonoBehaviour
         previousState = currentState;
         movementSpeed = player._movementSpeed;
         canAttack = true;
+        canSpecial = true;
         //nextState = new MovingState(anim, rb, player, this);
     }
 
     private void Update()
     {
+        Debug.Log("Current state: " + currentState);
         if(!playerMoved && player.transform.position != playerSpawn)
         {
             playerMoved = true;
@@ -83,6 +86,13 @@ public class StateMachine : MonoBehaviour
         canAttack = true;
     }
 
+
+    public IEnumerator enableSpecialAttack()
+    {
+        Debug.Log("enable special Attack");
+        yield return new WaitForSeconds(2.5f);
+        canSpecial = true;
+    }
     public Vector3 getPlayerPos()
     {
         return player.transform.position;

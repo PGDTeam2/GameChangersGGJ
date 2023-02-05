@@ -7,6 +7,7 @@ public class MovingState : BaseState
 
     private Vector3 gizmosCenter;
     private bool startMoving;
+    private bool slipper;
 
     public MovingState(Animator animator, Rigidbody2D rigidbody, Transform transform, Transform playerPosition, StateMachine statemachine) : base(animator, rigidbody, transform, playerPosition, statemachine)
     {
@@ -35,6 +36,21 @@ public class MovingState : BaseState
             trans.position += trans.GetChild(0).forward * 2.0f * Time.deltaTime;
 
             float distance = trans.position.x - stateMachine.getPlayerPos().x;
+            //perform slipper attack
+            //Debug.Log("distance: " + Mathf.Abs(distance) + " minslipper: " + minSlipperRange + " maxslipper: " + maxSlipperRange + " canAttack: " + stateMachine.canAttack + " canSpecial: " + stateMachine.canSpecial);
+            if(Mathf.Abs(distance) > minSlipperRange && Mathf.Abs(distance) < maxSlipperRange && stateMachine.canAttack && stateMachine.canSpecial)
+            {
+                float randomAttack = Random.Range(0, 100);
+                Debug.Log("Try slipper: move");
+                if(randomAttack > 95)
+                {
+                    slipper = true;
+                    SwitchState();
+                }
+                
+            }
+
+            //perform normal attack
             if (Mathf.Abs(distance) < attackRange && stateMachine.canAttack)
             {
                 SwitchState();
@@ -54,7 +70,14 @@ public class MovingState : BaseState
 
     public override void SwitchState()
     {
-        
+ 
+        if(slipper)
+        {
+            stateMachine.canAttack = false;
+            stateMachine.canSpecial = false;
+            stateMachine.nextState = new SlipperAttackState(anim, rb, trans, playerPos, stateMachine);
+            return;
+        }
             stateMachine.canAttack = false;
             gizmosCenter = trans.position;
             float randomAttack = Random.Range(0, 100);
