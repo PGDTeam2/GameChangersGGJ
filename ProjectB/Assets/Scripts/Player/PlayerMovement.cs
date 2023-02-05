@@ -11,9 +11,15 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody2D rb;
 
     [SerializeField] private float movementSpeed;
+    public float _movementSpeed
+    {
+        get { return movementSpeed; }
+    }
     private float inputValue;
     [SerializeField] private float jumpForce;
     private bool isGrounded = true;
+
+    private bool facingRight;
 
     public bool IsGrounded
     {
@@ -38,7 +44,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        isGrounded = checkGrounded();
+        handleFeet();
     }
 
     private void FixedUpdate()
@@ -82,12 +88,39 @@ public class PlayerMovement : MonoBehaviour
 
         if (walking)
         {
-            float rotation = inputValue < 0 ? -90 : 90;
+            facingRight = inputValue < 0;
+            float rotation = facingRight ? -90 : 90;
+
             character.eulerAngles = new Vector3(transform.eulerAngles.x, rotation, transform.eulerAngles.z);
             rb.AddForce(new Vector2(inputValue * movementSpeed, 0));
         }
 
         repressedMove = false;
+    }
+
+
+    /// <summary>
+    /// function that handles the feet raycast
+    /// </summary>
+    private void handleFeet(){
+       var hits = Physics2D.CircleCastAll((Vector2) groundPoint.position, 0.15f, Vector2.zero, 0);
+       foreach(var hit in hits){
+        if(hit.collider.gameObject == gameObject)
+                continue;
+
+        
+        isGrounded = hit.collider.gameObject.layer == LayerMask.NameToLayer("Ground");
+
+
+        if(hit.collider.gameObject.layer == LayerMask.NameToLayer("CombatEntity"))
+                push(hit.collider.transform);
+        }
+    }
+
+    private void push(Transform other){
+        float dir = transform.position.x > other.position.x ? 10 : -10;
+        Debug.Log("PUSH");
+        rb.AddForce(new Vector2(dir, 0));
     }
 
     public void HandleMovement(InputAction.CallbackContext context)
@@ -105,19 +138,10 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
-        if (!context.started || !isGrounded || Time.timeScale == 0)
+        if (!context.started || !isGrounded || Time.timeScale == 0 || rb.velocity.y > 0)
             return;
 
         rb.AddForce(new Vector2(0, jumpForce));
     }
 
-    /// <summary>
-    /// function that checks if player is grounded
-    /// </summary>
-    /// <returns>true if player collides with the ground</returns>
-    private bool checkGrounded()
-    {
-        return Physics2D.CircleCast((Vector2) groundPoint.position, 0.15f, Vector2.zero, 0,
-            LayerMask.GetMask("Ground"));
-    }
 }
