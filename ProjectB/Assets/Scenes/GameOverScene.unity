@@ -460,7 +460,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9016126c104e74e4d95ea0e198ca81a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeElement: {fileID: 1399276015}
+  activeElement: {fileID: 1399276017}
 --- !u!114 &1009153304
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -790,7 +790,7 @@ MonoBehaviour:
       - m_Target: {fileID: 1009153303}
         m_TargetAssemblyTypeName: UInavigator, Assembly-CSharp
         m_MethodName: Select
-        m_Mode: 1
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -873,7 +873,7 @@ GameObject:
   - component: {fileID: 1399276013}
   - component: {fileID: 1399276012}
   - component: {fileID: 1399276016}
-  - component: {fileID: 1399276015}
+  - component: {fileID: 1399276017}
   m_Layer: 5
   m_Name: try again
   m_TagString: Untagged
@@ -996,22 +996,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1399276010}
   m_CullTransparentMesh: 1
---- !u!114 &1399276015
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1399276010}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc7d52ff4e3d7724bbddddd4d55878fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  up: {fileID: 0}
-  down: {fileID: 1779970918}
-  left: {fileID: 0}
-  right: {fileID: 0}
 --- !u!114 &1399276016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1025,6 +1009,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scene: 0
+--- !u!114 &1399276017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1399276010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17e972fb8eb21c2489a5ba27f1cae3c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  up: {fileID: 0}
+  down: {fileID: 1779970918}
+  left: {fileID: 0}
+  right: {fileID: 0}
 --- !u!1 &1558577573
 GameObject:
   m_ObjectHideFlags: 0
@@ -1264,8 +1264,8 @@ GameObject:
   - component: {fileID: 1779970916}
   - component: {fileID: 1779970915}
   - component: {fileID: 1779970914}
-  - component: {fileID: 1779970918}
   - component: {fileID: 1779970917}
+  - component: {fileID: 1779970918}
   m_Layer: 5
   m_Name: main menu
   m_TagString: Untagged
@@ -1410,10 +1410,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1779970912}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc7d52ff4e3d7724bbddddd4d55878fb, type: 3}
+  m_Script: {fileID: 11500000, guid: 17e972fb8eb21c2489a5ba27f1cae3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  up: {fileID: 1399276015}
+  up: {fileID: 1399276017}
   down: {fileID: 0}
   left: {fileID: 0}
   right: {fileID: 0}
