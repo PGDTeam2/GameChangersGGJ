@@ -62,9 +62,6 @@ public class pauzeHandler : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
 
         Time.timeScale = 1;
-
-        foreach(MonoBehaviour component in pausedComponents)
-            component.enabled = true;
         
         input.actions.FindActionMap("ingame").Enable();
         input.actions.FindActionMap("UI").Disable();
