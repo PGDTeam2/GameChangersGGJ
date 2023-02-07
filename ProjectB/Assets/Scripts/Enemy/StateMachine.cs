@@ -44,7 +44,6 @@ public class StateMachine : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("Current state: " + currentState);
         if(!playerMoved && player.transform.position != playerSpawn)
         {
             playerMoved = true;

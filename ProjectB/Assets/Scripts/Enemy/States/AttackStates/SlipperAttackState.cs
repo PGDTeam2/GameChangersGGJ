@@ -19,12 +19,10 @@ public class SlipperAttackState : AttackState
     public override void Update()
     {
         //base.Update();
-        Debug.Log("SlipperAttack");
         if (anim.GetCurrentAnimatorClipInfo(0).Length > 0)
         {
             if (anim.GetCurrentAnimatorClipInfo(0)[0].clip.name.Contains("Slipper"))
             {
-                Debug.Log("Played anim");
                 playedAnim = true;
             }
         }

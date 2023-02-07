@@ -77,7 +77,6 @@ public class IdleState : BaseState
                     stateMachine.canAttack && stateMachine.canSpecial)
                 {
                     float randomAttack = Random.Range(0, 100);
-                    Debug.Log("Try slipper: move");
                     if (randomAttack > 95)
                     {
                         stateMachine.canAttack = false;

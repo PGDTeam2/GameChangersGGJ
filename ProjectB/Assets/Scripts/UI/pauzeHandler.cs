@@ -32,7 +32,6 @@ public class pauzeHandler : MonoBehaviour
 
         yield return new WaitForSecondsRealtime(0.2f);
         blocked = false;
-        Debug.Log("thid");
     }
 
     public void pauzeGame(InputAction.CallbackContext context){
@@ -45,8 +44,6 @@ public class pauzeHandler : MonoBehaviour
 
         Time.timeScale = 0;
 
-        foreach(MonoBehaviour component in pausedComponents)
-            component.enabled = false;
 
         input.actions.FindActionMap("ingame").Disable();
         input.actions.FindActionMap("UI").Enable();
@@ -55,9 +52,8 @@ public class pauzeHandler : MonoBehaviour
 
     public void unPauze(){
 
-        Debug.Log("try");
+
         if(blocked) return;
-        Debug.Log("succeed");
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
 
@@ -67,11 +63,6 @@ public class pauzeHandler : MonoBehaviour
         input.actions.FindActionMap("UI").Disable();
         gameObject.SetActive(false);
 
-    }
-
-    private void Update()
-    {
-        print(blocked);
     }
 
     /// <summary>

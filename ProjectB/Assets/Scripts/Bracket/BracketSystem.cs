@@ -34,7 +34,7 @@ public class BracketSystem : MonoBehaviour
         fights.Add(new Fight(Enemies[1], Enemies[2]));
         fights.Add(new Fight(Enemies[3], Enemies[4]));
         fights.Add(new Fight(Enemies[5], Enemies[6]));
-        fights.Add(new Fight(Enemies[7], Enemies[8]));
+        //fights.Add(new Fight(Enemies[7], Enemies[8]));
     }
 }
 

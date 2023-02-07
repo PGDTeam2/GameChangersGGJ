@@ -928,6 +928,7 @@ MonoBehaviour:
   - {fileID: 8184799169272965484, guid: fbee60b5f7bd3274abb3c7689e31ed7f, type: 3}
   - {fileID: 8184799169272965484, guid: fbee60b5f7bd3274abb3c7689e31ed7f, type: 3}
   - {fileID: 8184799169272965484, guid: fbee60b5f7bd3274abb3c7689e31ed7f, type: 3}
+  - {fileID: 8184799169272965484, guid: fbee60b5f7bd3274abb3c7689e31ed7f, type: 3}
   fights: []
   Player: {fileID: 2319851677128368083, guid: efb0a746ce2b81b4fb8e5430448a5823, type: 3}
 --- !u!4 &380454585

@@ -13,6 +13,7 @@ public class Readfight : MonoBehaviour
     private void Start()
     {
         StartCoroutine(moveToFight());
+        Debug.Log(FightData.Stage);
 
     }
     private void Update()

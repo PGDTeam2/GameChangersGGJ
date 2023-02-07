@@ -31,13 +31,11 @@ public class AttackState : BaseState
         {
             if (anim.GetCurrentAnimatorClipInfo(0)[0].clip.name.Contains("Attack") )
             {
-                Debug.Log("Played anim");
                 playedAnim = true;
             }
         }
         if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && playedAnim)
         {
-            Debug.Log("switch");
             SwitchState();
             return;
         }
